@@ -64,6 +64,7 @@ let shell_sort list a b c =
   flatten (map straight_insertion_sort (divide_into_groups third_pass 1))
     
   
-  
+	  (* example
+                     shell_sort records 8 4 2  *)
 
 
