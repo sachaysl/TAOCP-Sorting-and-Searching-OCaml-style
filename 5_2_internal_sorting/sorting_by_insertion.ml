@@ -53,7 +53,15 @@ let divide_into_groups list d =
   |_ , h :: t -> aux t (append_element (find_all_elements_in_list_that_are_0_mod_k_apart_from_first_element list d) return_list)
   in aux list []
 
-let shell_sort = ()
+let rec map f list = match list with
+  | [] -> []
+  | h ::t -> f h :: map f t
+
+let shell_sort list a b c =
+  let first_pass = flatten (map straight_insertion_sort (divide_into_groups list a)) in
+  let second_pass = flatten (map straight_insertion_sort (divide_into_groups first_pass b)) in
+  let third_pass = flatten (map straight_insertion_sort (divide_into_groups second_pass c)) in
+  flatten (map straight_insertion_sort (divide_into_groups third_pass 1))
     
   
   
